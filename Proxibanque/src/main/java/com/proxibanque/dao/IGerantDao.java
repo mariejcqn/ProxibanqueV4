@@ -3,9 +3,9 @@ package com.proxibanque.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.proxibanque.domaine.Compte;
+import com.proxibanque.domaine.Gerant;
 
 @Repository
-public interface ICompteDao extends JpaRepository<Compte, Integer>{
-	
+public interface IGerantDao extends JpaRepository<Gerant, Long>{
+
 }

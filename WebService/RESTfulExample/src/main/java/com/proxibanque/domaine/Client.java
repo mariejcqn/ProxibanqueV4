@@ -2,13 +2,6 @@ package com.proxibanque.domaine;
 
 import java.util.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  * Classe du client
@@ -16,19 +9,14 @@ import javax.persistence.OneToMany;
  * @author Marie, Aurelien, Kevin, Xavier
  *
  */
-@Entity
-public class Client {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+public class Client {
 	/** Identifiant en base de donnees du client */
 	private Long id;
 
-	@ManyToOne
 	/** Conseiller du client */
 	Conseiller conseiller;
 
-	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	/** Collection de comptes du client */
 	Collection<Compte> comptes;
 	

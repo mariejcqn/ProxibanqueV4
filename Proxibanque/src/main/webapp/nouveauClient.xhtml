@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/template/layout.xhtml">
+
+		<ui:define name="content">
+			<f:view>
+				<div class="ui-g-12">
+					<div class="ui-grid ui-grid-responsive">
+						<div class="ui-grid-row">
+							<div class="ui-g-12 ui-md-2">
+								<h:form>
+									<h:commandLink value="default" action="default" />
+								</h:form>
+							</div>
+							<div class="ui-g-12 ui-md-8">
+
+								<h:form id="formNewClient" style="width: 100%">
+
+									<h:panelGrid style="margin: 20px auto;" columns="1"
+										cellpadding="1">
+
+										<h3>Création nouveau client</h3>
+
+										<p:inputText id="prenom" required="true" label="prenom"
+											size="40" requiredMessage="champ obligatoire"
+											value="#{conseillerBeanDummy.client.prenom}">
+										</p:inputText>
+										<p:watermark for="prenom" value="prénom*" />
+										<p:message for="prenom" />
+
+										<p:inputText id="nom" required="true" label="nom" size="40"
+											requiredMessage="champ obligatoire"
+											value="#{conseillerBeanDummy.client.nom}">
+										</p:inputText>
+										<p:watermark for="nom" value="nom*" />
+										<p:message for="nom" />
+
+										<p:inputText id="email" required="true" label="email"
+											size="40" requiredMessage="merci de renseigner un e-mail"
+											validatorMessage="mauvais format"
+											value="#{conseillerBeanDummy.client.email}">
+
+											<f:validateRegex
+												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+
+										</p:inputText>
+										<p:watermark for="email" value="e-mail*" />
+										<p:message for="email" />
+
+										<p:inputText id="adresse" required="true" label="adresse"
+											size="40" requiredMessage="champ obligatoire"
+											value="#{conseillerBeanDummy.client.adresse}">
+										</p:inputText>
+										<p:watermark for="adresse" value="adresse*" />
+										<p:message for="adresse" />
+										<h:panelGrid columns="2">
+											<p:commandButton value="Valider"
+												action="#{conseillerBeanDummy.creerClient}" icon="ui-icon-check"
+												ajax="false" />
+											<p:commandButton value="Annuler" action="listeClients"
+												icon="ui-icon-cancel" ajax="false" />
+										</h:panelGrid>
+									</h:panelGrid>
+
+								</h:form>
+							</div>
+							<div class="ui-g-12 ui-md-8"></div>
+						</div>
+					</div>
+				</div>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

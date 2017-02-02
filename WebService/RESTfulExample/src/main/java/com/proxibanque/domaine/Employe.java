@@ -1,22 +1,14 @@
 package com.proxibanque.domaine;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  * Classe d'un employe
  * 
  * @author Marie, Aurelien, Kevin, Xavier
  *
  */
-@Entity
-@DiscriminatorValue("TYPE_EMPLOYE")
+
 public abstract class Employe {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	/** Identifiant dans la base de donnees */
 	private Long id = 0L;
 	

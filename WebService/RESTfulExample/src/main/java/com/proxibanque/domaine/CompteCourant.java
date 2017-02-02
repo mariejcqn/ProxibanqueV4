@@ -1,7 +1,5 @@
 package com.proxibanque.domaine;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
 
 /**
  * Classe du compte courant
@@ -9,8 +7,7 @@ import javax.persistence.Entity;
  * @author Marie, Aur�lien, K�vin, Xavier
  *
  */
-@Entity
-@DiscriminatorValue("COURANT")
+
 public class CompteCourant extends Compte {
 
 	/** Authorisation de d�couvert du compte courant */
@@ -21,7 +18,7 @@ public class CompteCourant extends Compte {
 	}
 
 	public CompteCourant(Client client, String numero, double solde, String dateOuverture) {
-		super(client, numero, solde, dateOuverture);
+		super();
 	}
 
 	public double getDecouvert() {
