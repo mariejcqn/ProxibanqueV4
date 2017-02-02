@@ -1,9 +1,12 @@
 package com.proxibanque.domaine;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +20,9 @@ import javax.persistence.OneToMany;
  *
  */
 @Entity
-public class Client {
+public class Client implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,9 +33,9 @@ public class Client {
 	/** Conseiller du client */
 	Conseiller conseiller;
 
-	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "client", cascade = CascadeType.ALL)
 	/** Collection de comptes du client */
-	Collection<Compte> comptes;
+	Collection<Compte> comptes = new ArrayList<Compte>();
 	
 	/** Nom du client */
 	private String nom;
@@ -43,6 +48,7 @@ public class Client {
 
 	public Client() {
 		super();
+		comptes = new ArrayList<Compte>();
 	}
 
 	public Client(Conseiller conseiller, Collection<Compte> comptes, String nom, String prenom, String email,

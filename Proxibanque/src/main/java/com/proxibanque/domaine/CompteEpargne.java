@@ -28,4 +28,8 @@ public class CompteEpargne extends Compte {
 		return taux;
 	}
 
+	public String getType(){
+		return "epargne";
+	}
+
 }

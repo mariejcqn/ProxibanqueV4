@@ -1,12 +1,16 @@
 package com.proxibanque.domaine;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * Classe du conseiller
@@ -23,6 +27,7 @@ public class Conseiller extends Employe {
 	Gerant gerant;
 	
 	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	/** Collection de clients du conseiller */
 	Collection<Client> clients = new ArrayList<Client>();
 	

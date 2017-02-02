@@ -27,5 +27,9 @@ public class CompteCourant extends Compte {
 	public double getDecouvert() {
 		return decouvert;
 	}
+	
+	public String getType(){
+		return "courant";
+	}
 
 }
