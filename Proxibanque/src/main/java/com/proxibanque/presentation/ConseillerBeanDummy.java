@@ -1,6 +1,7 @@
 package com.proxibanque.presentation;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Named;
 
@@ -13,6 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.proxibanque.domaine.Client;
 import com.proxibanque.domaine.Conseiller;
 import com.proxibanque.service.IClientService;
+import com.proxibanque.service.IGerantService;
 
 import util.CreationDao;
 
@@ -30,6 +32,9 @@ public class ConseillerBeanDummy implements Serializable {
 
 	@Autowired
 	private IClientService clientService;
+	
+	@Autowired
+	private IGerantService gerantService;
 
 	// Méthode static qui se lance à chaque initialisation
 	static {
@@ -69,6 +74,16 @@ public class ConseillerBeanDummy implements Serializable {
 		clientService.creerClient(client);
 		client = new Client();
 		return "listeClients";
-	}	
+	}
+	
+	public String modifierClientGerant() {
+		clientService.creerClient(client);
+		client = new Client();
+		return "listeClientsAll";
+	}
+	
+	public List<Client> getAfficherClientsAll() {
+		return gerantService.afficherClientsAll();
+	}
 
 }
