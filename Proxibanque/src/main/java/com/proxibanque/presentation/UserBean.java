@@ -2,6 +2,7 @@ package com.proxibanque.presentation;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -48,5 +49,6 @@ public class UserBean implements Serializable {
 		user.setId(0L);
 		return "/default.xhtml?faces-redirect=true";
 	}
+	
 	
 }

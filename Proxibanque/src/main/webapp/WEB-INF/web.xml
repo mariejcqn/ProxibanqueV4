@@ -24,7 +24,7 @@
  		<param-value>true</param-value>
  	</context-param>
   <welcome-file-list>
-    <welcome-file>default.xhtml</welcome-file>
+    <welcome-file>infosClient.xhtml</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>facesServlet</servlet-name>

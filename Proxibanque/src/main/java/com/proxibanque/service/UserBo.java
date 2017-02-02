@@ -6,5 +6,6 @@ public interface UserBo {
 
 	public String getMessage();
 	public void save(User user);
+
 	
 }
