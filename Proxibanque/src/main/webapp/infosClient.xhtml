@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/template/layout.xhtml">
+
+		<ui:define name="content">
+			<f:view>
+				<div class="ui-g-12">
+					<div class="ui-grid ui-grid-responsive">
+						<div class="ui-grid-row">
+							<div class="ui-g-12 ui-md-2"></div>
+							<div class="ui-g-12 ui-md-8">
+
+								<p:dataTable var="client" value="#{conseillerBeanDummy.client}" style="width: 100%">
+								<f:facet name="header">Informations du client</f:facet>
+									<p:column headerText="Nom">
+										<h:outputText value="#{client.nom}" />
+									</p:column>
+									<p:column headerText="Prénom">
+										<h:outputText value="#{client.prenom}" />
+									</p:column>
+									<p:column headerText="E-mail">
+										<h:outputText value="#{client.email}" />
+									</p:column>
+									<p:column headerText="Adresse">
+										<h:outputText value="#{client.adresse}" />
+									</p:column>
+								</p:dataTable>
+									<br/>
+								<p:dataTable var="compte" value="#{conseillerBeanDummy.client.comptes}" style="width: 100%">
+								<f:facet name="header">Liste des comptes du client</f:facet>
+									<p:column headerText="Id">
+										<h:outputText value="#{compte.id}" />
+									</p:column>
+									<p:column headerText="Numéro">
+										<h:outputText value="#{compte.numero}" />
+									</p:column>
+									<p:column headerText="Solde">
+										<h:outputText value="#{compte.solde}" />
+									</p:column>
+									
+								</p:dataTable>
+
+							</div>
+							<div class="ui-g-12 ui-md-8"></div>
+						</div>
+					</div>
+				</div>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>
