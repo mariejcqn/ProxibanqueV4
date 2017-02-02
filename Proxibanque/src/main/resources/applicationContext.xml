@@ -57,6 +57,7 @@
 
 	<!-- Etape 4 : specifier ou sont les interfaces -->
 	<jpa:repositories base-package="com.proxibanque.dao" />
+	<jpa:repositories base-package="util" />
 	
 	<!-- AOP -->
 	
