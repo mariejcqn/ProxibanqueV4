@@ -1,30 +1,17 @@
 package com.proxibanque.domaine;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
-
 /**
  * Classe du compte bancaire
  * 
  * @author Marie, Aurelien, Kevin, Xavier
  *
  */
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TYPE_COMPTE")
-public class Compte {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
+public abstract class Compte {
+
 	/** Identifiant en base de donn�es du compte */
 	private Long id;
 	
-	@OneToOne
 	/** Client du compte */
 	Client client;
 	

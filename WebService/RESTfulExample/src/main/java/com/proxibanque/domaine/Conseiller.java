@@ -1,28 +1,18 @@
 package com.proxibanque.domaine;
 
 import java.util.*;
-
-import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 /**
  * Classe du conseiller
  * 
  * @author Marie, Aurelien, Kevin, Xavier
  *
  */
-@Entity
-@DiscriminatorValue("CONSEILLER")
+
 public class Conseiller extends Employe {
 
-	@OneToOne
 	/** Gerant du conseiller */
 	Gerant gerant;
 	
-	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 	/** Collection de clients du conseiller */
 	Collection<Client> clients = new ArrayList<Client>();
 	
