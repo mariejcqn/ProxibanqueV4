@@ -19,6 +19,10 @@ public class CompteEpargne extends Compte {
 	public CompteEpargne() {
 		super();
 	}
+	
+	public CompteEpargne(Client client, String numero, double solde, String dateOuverture) {
+		super();
+	}
 
 	public double getTaux() {
 		return taux;

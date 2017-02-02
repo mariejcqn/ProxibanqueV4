@@ -18,7 +18,7 @@ public abstract class Employe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	/** Identifiant dans la base de donnees */
-	private Long id;
+	private Long id = 0L;
 	
 	/** Nom de l'employe */
 	private String nom;

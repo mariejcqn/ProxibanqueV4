@@ -2,15 +2,19 @@ package com.proxibanque.domaine;
 
 import java.util.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 /**
  * Classe du conseiller
  * 
- * @author Marie, Aur�lien, K�vin, Xavier
+ * @author Marie, Aurelien, Kevin, Xavier
  *
  */
 @Entity
@@ -18,12 +22,12 @@ import javax.persistence.OneToOne;
 public class Conseiller extends Employe {
 
 	@OneToOne
-	/** G�rant du conseiller */
+	/** Gerant du conseiller */
 	Gerant gerant;
 	
-	@OneToMany(mappedBy = "conseiller")
+	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 	/** Collection de clients du conseiller */
-	Collection<Client> clients;
+	Collection<Client> clients = new ArrayList<Client>();
 	
 	/** Nombre maximum de clients par conseiller */
 	private final int NOMBRE_CLIENTS = 10;

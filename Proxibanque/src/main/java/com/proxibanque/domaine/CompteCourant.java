@@ -20,6 +20,10 @@ public class CompteCourant extends Compte {
 		super();
 	}
 
+	public CompteCourant(Client client, String numero, double solde, String dateOuverture) {
+		super();
+	}
+
 	public double getDecouvert() {
 		return decouvert;
 	}

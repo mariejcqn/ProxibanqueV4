@@ -30,6 +30,7 @@ public class Client {
 	@OneToMany(mappedBy = "client")
 	/** Collection de comptes du client */
 	Collection<Compte> comptes;
+	
 	/** Nom du client */
 	private String nom;
 	/** Prenom du client */
@@ -54,6 +55,16 @@ public class Client {
 		this.adresse = adresse;
 	}
 
+	public Client(Conseiller conseiller, String nom, String prenom, String email,
+			String adresse) {
+		super();
+		this.conseiller = conseiller;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.adresse = adresse;
+	}
+	
 	public Client(Long id, Conseiller conseiller, Collection<Compte> comptes, String nom, String prenom, String email,
 			String adresse) {
 		super();

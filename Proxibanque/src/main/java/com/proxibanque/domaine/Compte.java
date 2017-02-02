@@ -47,6 +47,14 @@ public abstract class Compte {
 		this.solde = solde;
 		this.dateOuverture = dateOuverture;
 	}
+	
+	public Compte(Client client, String numero, double solde, String dateOuverture) {
+		super();
+		this.client = client;
+		this.numero = numero;
+		this.solde = solde;
+		this.dateOuverture = dateOuverture;
+	}
 
 	public Long getId() {
 		return id;
