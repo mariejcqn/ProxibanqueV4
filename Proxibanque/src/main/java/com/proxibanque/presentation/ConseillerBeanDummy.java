@@ -5,27 +5,39 @@ import java.io.Serializable;
 import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.proxibanque.domaine.Client;
 import com.proxibanque.domaine.Conseiller;
 import com.proxibanque.service.IClientService;
 
-@Named(value = "conseillerBeanDummy")
+import util.CreationDao;
+
+@Named
 @Scope("session")
-public class ConseillerBeanDummy implements Serializable{
-	
+public class ConseillerBeanDummy implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private Conseiller conseiller = new Conseiller();
 	private Client client = new Client();
-	
+
 	@Autowired
 	private IClientService clientService;
 
+	// Méthode static qui se lance à chaque initialisation
+	static {
+		new CreationDao().createDataBase();
+
+	}
+
+	// Getters and setters
 	public Conseiller getConseiller() {
 		return conseiller;
 	}
