@@ -27,5 +27,14 @@ public interface IClientService {
 	 *            Client à modifier
 	 */
 	void modifierClient(Client client);
+	
+	/**
+	 * Insert un client en base de données
+	 * 
+	 * @param client
+	 *            Client à insérer
+	 */
+	void creerClient(Client client);
+
 
 }
