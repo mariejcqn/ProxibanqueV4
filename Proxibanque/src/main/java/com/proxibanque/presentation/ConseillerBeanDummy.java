@@ -11,7 +11,7 @@ import com.proxibanque.domaine.Client;
 import com.proxibanque.domaine.Conseiller;
 import com.proxibanque.service.IClientService;
 
-@Named
+@Named(value = "conseillerBeanDummy")
 @Scope("session")
 public class ConseillerBeanDummy implements Serializable{
 	
@@ -46,11 +46,17 @@ public class ConseillerBeanDummy implements Serializable{
 		this.client = client;
 	}
 
-	public void creerClient() {
+	public String creerClient() {
 		clientService.creerClient(client);
 		conseiller.getClients().add(client);
-		client = null;
 		client = new Client();
+		return "listeClients";
 	}
+	
+	public String modifierClient() {
+		clientService.creerClient(client);
+		client = new Client();
+		return "listeClients";
+	}	
 
 }

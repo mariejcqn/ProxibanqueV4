@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/template/layout.xhtml">
+
+		<ui:define name="content">
+			<f:view>
+				<div class="ui-g-12">
+					<div class="ui-grid ui-grid-responsive">
+						<div class="ui-grid-row">
+							<div class="ui-g-12 ui-md-2"></div>
+							<div class="ui-g-12 ui-md-8">
+								<h:form>
+									<p:dataTable id="maintable" var="client"
+										value="#{conseillerBeanDummy.conseiller.clients}"
+										tableStyle="table-layout: auto;" style="width: 100%">
+										<f:facet name="header">
+            								liste de vos clients
+        								</f:facet>
+										<p:column headerText="Id" sortBy="#{client.id}">
+											<h:outputText value="#{client.id}" />
+										</p:column>
+
+										<p:column headerText="Nom" sortBy="#{client.nom}">
+											<h:outputText value="#{client.nom}" />
+										</p:column>
+
+										<p:column headerText="Prénom" sortBy="#{client.prenom}">
+											<h:outputText value="#{client.prenom}" />
+										</p:column>
+
+										<p:column headerText="E-mail" sortBy="#{client.email}">
+											<h:outputText value="#{client.email}" />
+										</p:column>
+
+										<p:column headerText="Adresse" sortBy="#{client.adresse}">
+											<h:outputText value="#{client.adresse}" />
+										</p:column>
+
+										<p:column headerText="Infos">
+											<center>
+												<p:commandButton value="Infos" action="infosClient">
+													<f:setPropertyActionListener value="#{client}"
+														target="#{conseillerBeanDummy.client}" />
+												</p:commandButton>
+											</center>
+										</p:column>
+										
+										<p:column headerText="Infos">
+											<center>
+												<p:commandButton value="Modifier" action="modifClient">
+													<f:setPropertyActionListener value="#{client}"
+														target="#{conseillerBeanDummy.client}" />
+												</p:commandButton>
+											</center>
+										</p:column>
+
+
+									</p:dataTable>
+								</h:form>
+								<div class="ui-g-12 ui-md-2"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>
