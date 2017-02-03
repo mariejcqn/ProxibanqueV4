@@ -152,8 +152,17 @@ public class EmployeBean implements Serializable {
 	}
 
 	public List<Client> getClientsDecouvert() {
+
+		/*
+		 * méthode retournant la liste des clients à découvert sur au moins 1
+		 * compte
+		 */
+
 		List<Client> cd = new ArrayList<Client>();
+
+		/* boucle sur les clients du conseiller */
 		for (Client client : conseiller.getClients()) {
+			/* boucle sur les comptes d'un client */
 			for (Compte compte : client.getComptes()) {
 				if (compte.getSolde() <= 0) {
 					cd.add(client);
@@ -162,5 +171,22 @@ public class EmployeBean implements Serializable {
 			}
 		}
 		return cd;
+	}
+
+	public List<Compte> getComptesConseiller() {
+
+		/* méthode retournant la liste des comptes managés par le conseiller */
+
+		List<Compte> comptes = new ArrayList<Compte>();
+
+		/* boucle sur les clients du conseiller */
+		for (Client client : conseiller.getClients()) {
+			/* boucle sur les comptes d'un client */
+			for (Compte compte : client.getComptes()) {
+				comptes.add(compte);
+			}
+		}
+		return comptes;
+
 	}
 }
