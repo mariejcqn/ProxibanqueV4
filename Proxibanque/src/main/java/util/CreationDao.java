@@ -72,17 +72,18 @@ public class CreationDao implements Serializable{
 			Client kenzy = new Client(claire, "Bouchema", "Kenzy", "kenzy.bouchema@outlook.fr",
 					"Route du Rire 69 001 Lyon");
 			Client kevin = new Client(claire, "Tekaya", "Kevin", "kevin.tekaya@gmail.fr", "Avenue du The 69 006 Lyon");
-			Client marieJ = new Client(claire, "Jacquin", "Marie", "marie.jacquin@gmail.com",
+			Client marieJ = new Client(lucie, "Jacquin", "Marie", "marie.jacquin@gmail.com",
 					"Rue de la Blonderie 69 100 Villerubanne");
-			Client marieM = new Client(claire, "Martelat", "Marie", "marie.jacquin@gmail.com",
+			Client marieM = new Client(lucie, "Martelat", "Marie", "marie.jacquin@gmail.com",
 					"Lieu dit del Mondort 69 XXX XXX");
-			Client xavier = new Client(claire, "Seta", "Xavier", "xavier.seta@gmail.com", "Rue du Blond 69 003 Lyon");
+			Client xavier = new Client(lucie, "Seta", "Xavier", "xavier.seta@gmail.com", "Rue du Blond 69 003 Lyon");
 
 			List<Client> listeClient1 = new ArrayList<Client>();
 			listeClient1.add(aurelien);
 			listeClient1.add(camille);
 			listeClient1.add(kenzy);
 			listeClient1.add(kevin);
+			
 			List<Client> listeClient2 = new ArrayList<Client>();
 			listeClient2.add(marieJ);
 			listeClient2.add(marieM);

@@ -1,6 +1,7 @@
 package com.proxibanque.presentation;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Named;
@@ -10,8 +11,10 @@ import org.springframework.context.annotation.Scope;
 
 
 import com.proxibanque.domaine.Client;
+import com.proxibanque.domaine.Compte;
 import com.proxibanque.domaine.Conseiller;
 import com.proxibanque.service.IClientService;
+import com.proxibanque.service.ICompteService;
 import com.proxibanque.service.IGerantService;
 
 import util.CreationDao;
@@ -27,12 +30,19 @@ public class ConseillerBeanDummy implements Serializable {
 
 	private Conseiller conseiller = new Conseiller();
 	private Client client = new Client();
+	
+	private Compte compteCredite = new Compte();
+	private Compte compteDebite = new Compte();
+	private double montant;
 
 	@Autowired
 	private IClientService clientService;
 	
 	@Autowired
 	private IGerantService gerantService;
+	
+	@Autowired
+	private ICompteService compteService;
 
 
 	// Méthode static qui se lance à chaque initialisation
@@ -62,6 +72,15 @@ public class ConseillerBeanDummy implements Serializable {
 		this.client = client;
 	}
 
+	public void setGerantService(IGerantService gerantService) {
+		this.gerantService = gerantService;
+	}
+
+	public void setCompteService(ICompteService compteService) {
+		this.compteService = compteService;
+	}
+
+	//Méthode du service
 	public String creerClient() {
 		clientService.creerClient(client);
 		conseiller.getClients().add(client);
@@ -85,4 +104,18 @@ public class ConseillerBeanDummy implements Serializable {
 		return gerantService.afficherClientsAll();
 	}
 
+	public String virement(){
+		List<Compte> listeCompte = compteService.virementCaC(compteCredite, compteDebite, montant);
+		if (listeCompte == null){
+			
+		}
+		else 
+		{
+			compteCredite = listeCompte.get(0);
+			compteDebite = listeCompte.get(1);
+			compteService.updateCompte(compteCredite);
+			compteService.updateCompte(compteDebite);
+		}
+		return "listeClients";
+	}
 }

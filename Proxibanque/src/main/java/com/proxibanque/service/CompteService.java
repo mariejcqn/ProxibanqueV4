@@ -3,7 +3,12 @@ package com.proxibanque.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.proxibanque.dao.ICompteDao;
 import com.proxibanque.domaine.Compte;
+
 import com.proxibanque.domaine.Virement;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -17,8 +22,12 @@ import com.sun.jersey.api.json.JSONConfiguration;
  * @author Marie, Aurélien, Kévin, Xavier
  *
  */
+@Service
 public class CompteService implements ICompteService {
-
+	
+	@Autowired
+	ICompteDao compteDao;
+	
 	public CompteService() {
 		super();
 	}
@@ -81,6 +90,18 @@ public class CompteService implements ICompteService {
 			e.printStackTrace();
 			return null;
 		}
+		
+	}
+
+	/**
+	 * Mettre à jour un compte
+	 * 
+	 * @param compte Compte à modifier
+	 * @return 
+	 */
+	@Override
+	public void updateCompte(Compte compte) {
+		compteDao.save(compte);
 		
 	}
 

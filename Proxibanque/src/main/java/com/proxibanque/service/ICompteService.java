@@ -34,5 +34,15 @@ public interface ICompteService {
 	 * @return List<Compte>
 	 */
 	List<Compte> virementCaC(Compte compteCrediteur, Compte compteDebiteur, double montant);
+	
+	/**
+	 * Mettre à jour un compte
+	 * 
+	 * 
+	 * @param compte
+	 *            Compte à modifier
+	 * @return 
+	 */
+	void updateCompte(Compte compte);
 
 }
