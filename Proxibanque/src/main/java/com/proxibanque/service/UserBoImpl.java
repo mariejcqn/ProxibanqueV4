@@ -9,18 +9,18 @@ import com.proxibanque.domaine.User;
 
 @Named
 public class UserBoImpl implements UserBo {
-	
+
 	@Autowired
 	private UserDao userDao;
-//	private ClassPathXmlApplicationContext appContext;
+	// private ClassPathXmlApplicationContext appContext;
 
 	@Override
 	public String getMessage() {
-		
+
 		return "Hello!";
-		
+
 	}
-	
+
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
@@ -31,15 +31,16 @@ public class UserBoImpl implements UserBo {
 
 	@Override
 	public void save(User user) {
-		
-		//chargement du contexte
-//		appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-		
-		//récupération d'un bean (dao)
-//		userDao = (UserDao) appContext.getBean("userDao");
-		
-		//utilisation du bean (insertion en base)
+
+		// chargement du contexte
+		// appContext = new
+		// ClassPathXmlApplicationContext("applicationContext.xml");
+
+		// récupération d'un bean (dao)
+		// userDao = (UserDao) appContext.getBean("userDao");
+
+		// utilisation du bean (insertion en base)
 		userDao.save(user);
 	}
-	
+
 }
