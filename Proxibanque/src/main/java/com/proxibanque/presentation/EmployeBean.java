@@ -12,7 +12,6 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
-
 import com.proxibanque.domaine.Client;
 import com.proxibanque.domaine.Compte;
 import com.proxibanque.domaine.Conseiller;
@@ -31,7 +30,7 @@ public class EmployeBean implements Serializable {
 
 	private Conseiller conseiller = new Conseiller();
 	private Client client = new Client();
-	
+
 	private Compte compteCredite = new Compte();
 	private Compte compteDebite = new Compte();
 	private double montant;
@@ -41,14 +40,13 @@ public class EmployeBean implements Serializable {
 
 	@Autowired
 	private IGerantService gerantService;
-	
+
 	@Autowired
 	private ICompteService compteService;
 
-
 	@Autowired
 	private IConseillerService conseillerService;
-	
+
 	private ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 	private String identifiant = context.getRemoteUser();
 
@@ -62,7 +60,7 @@ public class EmployeBean implements Serializable {
 	public void initialiser() {
 		setConseiller(conseillerService.chargerConseillerParIdentifiant(identifiant));
 	}
-	
+
 	// Constructeur
 	public EmployeBean() {
 		super();
@@ -109,7 +107,7 @@ public class EmployeBean implements Serializable {
 		this.compteService = compteService;
 	}
 
-	//Méthode du service
+	// Méthode du service
 	public String creerClient() {
 		client.setConseiller(conseiller);
 		clientService.creerClient(client);
@@ -133,25 +131,36 @@ public class EmployeBean implements Serializable {
 	public List<Client> getAfficherClientsAll() {
 		return gerantService.afficherClientsAll();
 	}
-	
+
 	public void logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		FacesContext.getCurrentInstance().getApplication().getNavigationHandler()
 				.handleNavigation(FacesContext.getCurrentInstance(), null, "/index.xhtml");
 	}
 
-	public String virement(){
+	public String virement() {
 		List<Compte> listeCompte = compteService.virementCaC(compteCredite, compteDebite, montant);
-		if (listeCompte == null){
-			
-		}
-		else 
-		{
+		if (listeCompte == null) {
+
+		} else {
 			compteCredite = listeCompte.get(0);
 			compteDebite = listeCompte.get(1);
 			compteService.updateCompte(compteCredite);
 			compteService.updateCompte(compteDebite);
 		}
 		return "listeClients";
+	}
+
+	public List<Client> getClientsDecouvert() {
+		List<Client> cd = new ArrayList<Client>();
+		for (Client client : conseiller.getClients()) {
+			for (Compte compte : client.getComptes()) {
+				if (compte.getSolde() <= 0) {
+					cd.add(client);
+					break;
+				}
+			}
+		}
+		return cd;
 	}
 }
