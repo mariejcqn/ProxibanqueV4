@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/template/layout-init.xhtml">
+
+		<ui:define name="content">
+			<f:view>
+				<div class="ui-g-12">
+					<div class="ui-grid ui-grid-responsive">
+						<div class="ui-grid-row">
+							<div class="ui-g-12 ui-md-2"></div>
+							<div class="ui-g-12 ui-md-8">
+
+								<h1>Bienvenue sur Proxibanque v4</h1>
+
+								<h:panelGrid columns="2">
+									<p:button outcome="conseiller/listeClients.xhtml" value="Je suis un conseiller">
+									</p:button>
+									<p:button outcome="gerant/listeConseillers.xhtml" value="Je suis un gérant">
+									</p:button>
+								</h:panelGrid>
+
+							</div>
+							<div class="ui-g-12 ui-md-2"></div>
+						</div>
+					</div>
+				</div>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

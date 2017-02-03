@@ -23,7 +23,7 @@
 							<div class="ui-g-12 ui-md-8">
 								<h:form>
 									<p:dataTable id="maintable" var="client"
-										value="#{conseillerBeanDummy.afficherClientsAll}"
+										value="#{employeBean.afficherClientsAll}"
 										tableStyle="table-layout: auto;" style="width: 100%">
 										<f:facet name="header">
             								liste des clients Proxibanque
@@ -52,7 +52,7 @@
 											<center>
 												<p:commandButton value="Infos" action="infosClient">
 													<f:setPropertyActionListener value="#{client}"
-														target="#{conseillerBeanDummy.client}" />
+														target="#{employeBean.client}" />
 												</p:commandButton>
 											</center>
 										</p:column>
@@ -61,7 +61,7 @@
 											<center>
 												<p:commandButton value="Modifier" action="modifClientGerant">
 													<f:setPropertyActionListener value="#{client}"
-														target="#{conseillerBeanDummy.client}" />
+														target="#{employeBean.client}" />
 												</p:commandButton>
 											</center>
 										</p:column>

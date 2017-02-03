@@ -23,4 +23,13 @@ public interface IConseillerService {
 	 */
 	Collection<Client> afficherListeClients(Conseiller conseiller);
 
+	/**
+	 * Charge le conseiller depuis la base de données par son identifiant
+	 * 
+	 * @param identifiant
+	 *            Identifiant du conseiller
+	 * @return Conseiller à retourner
+	 */
+	Conseiller chargerConseillerParIdentifiant(String identifiant);
+
 }

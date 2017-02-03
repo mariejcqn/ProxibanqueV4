@@ -11,17 +11,33 @@
 </h:head>
 <h:body>
 	<ui:composition>
-		<!-- MEGAMENU HORIZONTAL -->
-		<h:form>
-		<p:megaMenu orientation="horizontal" style="margin-top: 20px">
-			<p:menuitem value="Liste des clients" icon="fa fa-users" action="listeClients" />
-			<p:menuitem value="Créer client" icon="fa fa-user-plus" action="nouveauClient"/>
-			<p:menuitem value="Liste des comptes" icon="fa fa-list" />
-			<p:menuitem value="Virement compte à compte" icon="fa fa-arrows-h" />
-			<p:menuitem value="Gérant" icon="fa fa-user-secret" action="listeClientsAll"/>
-			<p:menuitem value="Se déconnecter" icon="fa fa-sign-out" />
-		</p:megaMenu>
-		</h:form>
+		<div class="ui-g-12">
+			<div class="ui-grid ui-grid-responsive">
+				<div class="ui-grid-row">
+					<div class="ui-g-12 ui-md-2">
+						<center><h:graphicImage value="../resources/images/proxibanquev4_logo.png" /></center>
+					</div>
+					<div class="ui-g-12 ui-md-8">
+						<!-- MEGAMENU HORIZONTAL -->
+						<h:form>
+							<p:megaMenu orientation="horizontal" style="margin-top: 20px">
+								<p:menuitem value="Liste des clients" icon="fa fa-fw fa-users"
+									action="listeClients" />
+								<p:menuitem value="Créer client" icon="fa fa-fw fa-user-plus"
+									action="nouveauClient" />
+								<p:menuitem value="Liste des comptes" icon="fa fa-fw fa-list" />
+								<p:menuitem value="Virements" icon="fa fa-fw fa-arrows-h" />
+								<p:menuitem value="Gérant" icon="fa fa-fw fa-user-secret"
+									action="listeClientsAll" />
+								<p:menuitem
+									value="Se déconnecter (#{employeBean.conseiller.prenom} #{employeBean.conseiller.nom})"
+									icon="fa fa-fw fa-sign-out" />
+							</p:megaMenu>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</ui:composition>
 </h:body>
 

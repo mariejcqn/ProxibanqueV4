@@ -35,14 +35,14 @@
 
 										<p:inputText id="prenom" required="true" label="prenom"
 											size="40" requiredMessage="champ obligatoire"
-											value="#{conseillerBeanDummy.client.prenom}">
+											value="#{employeBean.client.prenom}">
 										</p:inputText>
 										<p:watermark for="prenom" value="prénom*" />
 										<p:message for="prenom" />
 
 										<p:inputText id="nom" required="true" label="nom" size="40"
 											requiredMessage="champ obligatoire"
-											value="#{conseillerBeanDummy.client.nom}">
+											value="#{employeBean.client.nom}">
 										</p:inputText>
 										<p:watermark for="nom" value="nom*" />
 										<p:message for="nom" />
@@ -50,7 +50,7 @@
 										<p:inputText id="email" required="true" label="email"
 											size="40" requiredMessage="merci de renseigner un e-mail"
 											validatorMessage="mauvais format"
-											value="#{conseillerBeanDummy.client.email}">
+											value="#{employeBean.client.email}">
 
 											<f:validateRegex
 												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
@@ -61,13 +61,13 @@
 
 										<p:inputText id="adresse" required="true" label="adresse"
 											size="40" requiredMessage="champ obligatoire"
-											value="#{conseillerBeanDummy.client.adresse}">
+											value="#{employeBean.client.adresse}">
 										</p:inputText>
 										<p:watermark for="adresse" value="adresse*" />
 										<p:message for="adresse" />
 										<h:panelGrid columns="2">
 											<p:commandButton value="Valider"
-												action="#{conseillerBeanDummy.modifierClientGerant}" icon="ui-icon-check"
+												action="#{employeBean.modifierClientGerant}" icon="ui-icon-check"
 												ajax="false" />
 											<p:commandButton value="Annuler" action="listeClientsAll"
 												icon="ui-icon-cancel" ajax="false" />

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/template/layout-init.xhtml">
+
+		<ui:define name="content">
+			<f:view>
+				<div class="ui-g-12">
+					<div class="ui-grid ui-grid-responsive">
+						<div class="ui-grid-row">
+							<div class="ui-g-12 ui-md-2"></div>
+							<div class="ui-g-12 ui-md-8">
+
+								<h:form>
+									<p:panel id="basic" header="Erreur" style="margin-bottom:20px">
+										<p:panelGrid columns="1" layout="grid">
+											<p:graphicImage width="1cm" name="images/sad.png" />
+											<h:outputText value="L'application ne vous reconnaît pas. Êtes-vous vraiment qui vous prétendez être ?..." />
+											<p:button outcome="index.xhtml"
+												value="Retour à la page d'accueil">
+											</p:button>
+										</p:panelGrid>
+									</p:panel>
+								</h:form>
+
+							</div>
+							<div class="ui-g-12 ui-md-2"></div>
+						</div>
+					</div>
+				</div>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>
