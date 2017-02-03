@@ -1,6 +1,7 @@
 package com.proxibanque.presentation;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,14 +10,14 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 import com.proxibanque.domaine.Client;
+import com.proxibanque.domaine.Compte;
 import com.proxibanque.domaine.Conseiller;
 import com.proxibanque.service.IClientService;
+import com.proxibanque.service.ICompteService;
 import com.proxibanque.service.IGerantService;
 import com.proxibanque.service.IConseillerService;
 
@@ -28,19 +29,28 @@ public class EmployeBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	private Conseiller conseiller = new Conseiller();
+	private Client client = new Client();
+	
+	private Compte compteCredite = new Compte();
+	private Compte compteDebite = new Compte();
+	private double montant;
+
 	@Autowired
 	private IClientService clientService;
 
 	@Autowired
 	private IGerantService gerantService;
+	
+	@Autowired
+	private ICompteService compteService;
+
 
 	@Autowired
 	private IConseillerService conseillerService;
 	
 	private ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 	private String identifiant = context.getRemoteUser();
-	private Conseiller conseiller = new Conseiller();
-	private Client client = new Client();
 
 	// Méthode static qui se lance à chaque initialisation
 	static {
@@ -95,6 +105,11 @@ public class EmployeBean implements Serializable {
 		this.client = client;
 	}
 
+	public void setCompteService(ICompteService compteService) {
+		this.compteService = compteService;
+	}
+
+	//Méthode du service
 	public String creerClient() {
 		client.setConseiller(conseiller);
 		clientService.creerClient(client);
@@ -125,4 +140,18 @@ public class EmployeBean implements Serializable {
 				.handleNavigation(FacesContext.getCurrentInstance(), null, "/index.xhtml");
 	}
 
+	public String virement(){
+		List<Compte> listeCompte = compteService.virementCaC(compteCredite, compteDebite, montant);
+		if (listeCompte == null){
+			
+		}
+		else 
+		{
+			compteCredite = listeCompte.get(0);
+			compteDebite = listeCompte.get(1);
+			compteService.updateCompte(compteCredite);
+			compteService.updateCompte(compteDebite);
+		}
+		return "listeClients";
+	}
 }

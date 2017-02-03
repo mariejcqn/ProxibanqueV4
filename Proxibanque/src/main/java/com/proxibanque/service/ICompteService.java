@@ -1,5 +1,7 @@
 package com.proxibanque.service;
 
+import java.util.List;
+
 import com.proxibanque.domaine.Compte;
 
 /**
@@ -21,7 +23,7 @@ public interface ICompteService {
 	Compte ajouterCompte(Compte compte);
 
 	/**
-	 * Réalise un virement de compte à compte à l'intérieur de la banque
+	 * Réalise un virement de compte à compte à l'intérieur de la banque à l'aide d'un web service
 	 * 
 	 * @param compteCrediteur
 	 *            Compte créditeur du virement (fournit le montant)
@@ -29,7 +31,18 @@ public interface ICompteService {
 	 *            Compte débiteur du virement (reçoit le montant)
 	 * @param montant
 	 *            Montant à transférer
+	 * @return List<Compte>
 	 */
-	void virementCaC(Compte compteCrediteur, Compte compteDebiteur, double montant);
+	List<Compte> virementCaC(Compte compteCrediteur, Compte compteDebiteur, double montant);
+	
+	/**
+	 * Mettre à jour un compte
+	 * 
+	 * 
+	 * @param compte
+	 *            Compte à modifier
+	 * @return 
+	 */
+	void updateCompte(Compte compte);
 
 }
