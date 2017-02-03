@@ -44,11 +44,45 @@ public class EmployeBean implements Serializable {
 	@Autowired
 	private ICompteService compteService;
 
+	public Compte getCompteCredite() {
+		return compteCredite;
+	}
+
+	public void setCompteCredite(Compte compteCredite) {
+		this.compteCredite = compteCredite;
+	}
+
+	public Compte getCompteDebite() {
+		return compteDebite;
+	}
+
+	public void setCompteDebite(Compte compteDebite) {
+		this.compteDebite = compteDebite;
+	}
+
+	public double getMontant() {
+		return montant;
+	}
+
+	public void setMontant(double montant) {
+		this.montant = montant;
+	}
+
+	public List<Compte> getComptesAll() {
+		return comptesAll;
+	}
+
+	public void setComptesAll(List<Compte> comptesAll) {
+		this.comptesAll = comptesAll;
+	}
+
 	@Autowired
 	private IConseillerService conseillerService;
 
 	private ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 	private String identifiant = context.getRemoteUser();
+
+	private List<Compte> comptesAll;
 
 	// Méthode static qui se lance à chaque initialisation
 	static {
@@ -138,6 +172,17 @@ public class EmployeBean implements Serializable {
 				.handleNavigation(FacesContext.getCurrentInstance(), null, "/index.xhtml");
 	}
 
+	@PostConstruct
+	public void initComptes() {
+		this.comptesAll = conseillerService.afficherAllComptes();
+		
+		for (int i= 0; i <this.comptesAll.size(); i++) {
+			
+			System.out.println(this.comptesAll.get(i));
+			
+		}
+	}
+	
 	public String virement() {
 		List<Compte> listeCompte = compteService.virementCaC(compteCredite, compteDebite, montant);
 		if (listeCompte == null) {
@@ -147,7 +192,10 @@ public class EmployeBean implements Serializable {
 			compteDebite = listeCompte.get(1);
 			compteService.updateCompte(compteCredite);
 			compteService.updateCompte(compteDebite);
+
+			initComptes();
 		}
+		montant = 0;
 		return "listeClients";
 	}
 

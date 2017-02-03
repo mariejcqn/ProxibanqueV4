@@ -32,7 +32,7 @@ public class Logging {
 	 * @return Collection de clients du conseiller
 	 * 			Retour de la méthode du virementCaC ou null si l'opération n'est pas possible
 	 */
-	@Around("execution(com.proxibanque.service.CompteService.virementCaC(..)")
+	@Around("* execution(com.proxibanque.service.CompteService.virementCaC(..)")
 	public Object doBasicProfiling(ProceedingJoinPoint pjp) throws Throwable {
 		// Récupération des arguments
 		System.out.println("Récupération des arguments");

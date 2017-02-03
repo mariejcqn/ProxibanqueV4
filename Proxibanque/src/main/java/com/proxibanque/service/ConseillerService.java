@@ -7,9 +7,10 @@ import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proxibanque.dao.ICompteDao;
+import com.proxibanque.dao.IEmployeDao;
 import com.proxibanque.domaine.Client;
 import com.proxibanque.domaine.Conseiller;
-import com.proxibanque.dao.IEmployeDao;
 
 /**
  * Implémente l'interface IConseillerService
@@ -21,10 +22,17 @@ import com.proxibanque.dao.IEmployeDao;
 public class ConseillerService extends AEmployeService implements IConseillerService {
 
 	@Autowired
+	private ICompteDao compteDao;
+
+	@Autowired
 	private IEmployeDao conseillerDao;
-	
+
 	public ConseillerService() {
 		super();
+	}
+
+	public void setCompteDao(ICompteDao compteDao) {
+		this.compteDao = compteDao;
 	}
 
 	public void setConseillerDao(IEmployeDao conseillerDao) {
@@ -43,5 +51,7 @@ public class ConseillerService extends AEmployeService implements IConseillerSer
 		ArrayList<Conseiller> listeConseillers = (ArrayList<Conseiller>) conseillerDao.findByIdentifiant(identifiant);
 		return listeConseillers.get(0);
 	}
+	
+	
 
 }

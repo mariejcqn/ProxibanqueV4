@@ -22,7 +22,7 @@ public class Virement implements Serializable{
 	private double compteCredite;
 
 	//Constructeurs
-	public Virement(double montant, double compteDebite, double compteCredite) {
+	public Virement(double compteDebite, double compteCredite, double montant) {
 		super();
 		this.montant = montant;
 		this.compteDebite = compteDebite;

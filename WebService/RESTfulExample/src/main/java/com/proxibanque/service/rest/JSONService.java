@@ -45,11 +45,13 @@ public class JSONService {
 	@Path("/senda")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response consumeJSON(Virement virement) {
+		//Récupération des données
 		double debite = virement.getCompteDebite();
 		double credite = virement.getCompteCredite();
 		double montant = virement.getMontant();
 		
-		virement.setCompteDebite(debite-montant);
+		//changement du montant
+		virement.setCompteDebite(debite - montant);
 		virement.setCompteCredite(credite + montant);
 
 		return Response.status(200).entity(virement).build();

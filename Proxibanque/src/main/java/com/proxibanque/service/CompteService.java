@@ -24,10 +24,10 @@ import com.sun.jersey.api.json.JSONConfiguration;
  */
 @Service
 public class CompteService implements ICompteService {
-	
+
 	@Autowired
 	ICompteDao compteDao;
-	
+
 	public CompteService() {
 		super();
 	}
@@ -51,6 +51,7 @@ public class CompteService implements ICompteService {
 	 */
 	@Override
 	public List<Compte> virementCaC(Compte compteCrediteur, Compte compteDebiteur, double montant) {
+
 		// Url du web service
 		String url = "http://localhost:8080/RESTfulExample/rest/json/virementcompte/senda";
 
@@ -75,14 +76,14 @@ public class CompteService implements ICompteService {
 					.post(ClientResponse.class, virement);
 
 			virement = (Virement) response.getEntity(Virement.class);
-			
+
 			compteCrediteur.setSolde(virement.getCompteCredite());
-			compteDebiteur.setSolde(virement.getCompteCredite());
-			
+			compteDebiteur.setSolde(virement.getCompteDebite());
+
 			List<Compte> listeCompte = new ArrayList<Compte>();
 			listeCompte.add(compteCrediteur);
 			listeCompte.add(compteDebiteur);
-			
+
 			return listeCompte;
 
 		} catch (Exception e) {
@@ -90,19 +91,20 @@ public class CompteService implements ICompteService {
 			e.printStackTrace();
 			return null;
 		}
-		
+
 	}
 
 	/**
 	 * Mettre à jour un compte
 	 * 
-	 * @param compte Compte à modifier
-	 * @return 
+	 * @param compte
+	 *            Compte à modifier
+	 * @return
 	 */
 	@Override
 	public void updateCompte(Compte compte) {
 		compteDao.save(compte);
-		
+
 	}
 
 }

@@ -8,19 +8,21 @@ import java.io.Serializable;
  * @author Marie, Aurelien, Kevin, Xavier
  *
  */
-public class Virement implements Serializable{
-	//Proprietes
-	/**serialVersionUID */
+
+public class Virement implements Serializable {
+	// Proprietes
+	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
 	/** Montant du virement */
 	private double montant;
 	/** Montant du compte debite */
 	private double compteDebite;
-	/** Montant du compte credite*/
+	/** Montant du compte credite */
 	private double compteCredite;
 
-	//Constructeurs
-	public Virement(double montant, double compteDebite, double compteCredite) {
+	// Constructeurs
+	public Virement(double compteDebite, double compteCredite, double montant) {
+
 		super();
 		this.montant = montant;
 		this.compteDebite = compteDebite;
@@ -31,7 +33,7 @@ public class Virement implements Serializable{
 		super();
 	}
 
-	//Getters & Setters
+	// Getters & Setters
 	public double getMontant() {
 		return montant;
 	}
@@ -55,5 +57,5 @@ public class Virement implements Serializable{
 	public void setCompteCredite(double compteCredite) {
 		this.compteCredite = compteCredite;
 	}
-	
+
 }

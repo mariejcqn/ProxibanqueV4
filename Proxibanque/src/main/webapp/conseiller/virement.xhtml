@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/template/layout.xhtml">
+		<ui:define name="content">
+			<f:view>
+				<center>
+					<h2>Virements compte à compte</h2>
+				</center>
+				<h:form>
+					<div class="ui-g-12">
+						<div class="ui-grid ui-grid-responsive">
+							<div class="ui-grid-row">
+								<div class="ui-g-12 ui-md-2"></div>
+								<div class="ui-g-12 ui-md-8">
+									<p:dataTable id="tableDebite" var="compte"
+										value="#{employeBean.comptesAll}" rows="5"
+										paginator="true" paginatorPosition="bottom"
+										selection="#{employeBean.compteDebite}"
+										rowKey="#{compte.id}" tableStyle="table-layout: auto;"
+										style="width: 100%">
+										<f:facet name="header">
+            								compte à débiter
+        								</f:facet>
+										<p:column selectionMode="single"
+											style="width:16px;text-align:center" />
+										<p:column headerText="Id" sortBy="#{compte.id}">
+											<h:outputText value="#{compte.id}" />
+										</p:column>
+
+										<p:column headerText="Prenom" sortBy="#{compte.client.prenom}">
+											<h:outputText value="#{compte.client.prenom}" />
+										</p:column>
+
+										<p:column headerText="Nom" sortBy="#{compte.client.nom}">
+											<h:outputText value="#{compte.client.nom}" />
+										</p:column>
+
+										<p:column headerText="Numéro" sortBy="#{compte.numero}">
+											<h:outputText value="#{compte.numero}" />
+										</p:column>
+
+										<p:column headerText="Solde" sortBy="#{compte.solde}">
+											<h:outputText value="#{compte.solde}" />
+										</p:column>
+
+									</p:dataTable>
+									<div class="ui-g-12 ui-md-2"></div>
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-g-12 ui-md-2"></div>
+								<div class="ui-g-12 ui-md-8">
+									<center>
+										<p:panelGrid columns="2">
+											<p:outputLabel value="Montant : "></p:outputLabel>
+											<p:inputText id="montant" required="true" label="montant"
+												requiredMessage="champ obligatoire"
+												value="#{employeBean.montant}">
+											</p:inputText>
+										</p:panelGrid>
+									</center>
+									<div class="ui-g-12 ui-md-2"></div>
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-g-12 ui-md-2"></div>
+								<div class="ui-g-12 ui-md-8">
+									<p:dataTable id="tableCredite" var="compte"
+										value="#{employeBean.comptesAll}" rows="5"
+										paginator="true" paginatorPosition="bottom"
+										selection="#{employeBean.compteCredite}"
+										rowKey="#{compte.id}" tableStyle="table-layout: auto;"
+										style="width: 100%">
+										<f:facet name="header">
+            								compte à créditer
+        								</f:facet>
+										<p:column selectionMode="single"
+											style="width:16px;text-align:center" />
+										<p:column headerText="Id" sortBy="#{compte.id}">
+											<h:outputText value="#{compte.id}" />
+										</p:column>
+
+										<p:column headerText="Prenom" sortBy="#{compte.client.prenom}">
+											<h:outputText value="#{compte.client.prenom}" />
+										</p:column>
+
+										<p:column headerText="Nom" sortBy="#{compte.client.nom}">
+											<h:outputText value="#{compte.client.nom}" />
+										</p:column>
+
+										<p:column headerText="Numéro" sortBy="#{compte.numero}">
+											<h:outputText value="#{compte.numero}" />
+										</p:column>
+
+										<p:column headerText="Solde" sortBy="#{compte.solde}">
+											<h:outputText value="#{compte.solde}" />
+										</p:column>
+
+									</p:dataTable>
+									<div class="ui-g-12 ui-md-2"></div>
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-g-12 ui-md-2"></div>
+								<div class="ui-g-12 ui-md-8">
+									<center>
+										<p:commandButton value="Transférer"
+											action="#{employeBean.virement}"></p:commandButton>
+									</center>
+									<div class="ui-g-12 ui-md-2"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</h:form>
+			</f:view>
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+
+</html>

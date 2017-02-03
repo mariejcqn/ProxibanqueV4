@@ -11,7 +11,7 @@ import com.proxibanque.domaine.Client;
  * @author Marie, Aurélien, Kévin, Xavier
  *
  */
-public interface IConseillerService {
+public interface IConseillerService extends IEmployeService {
 
 	/**
 	 * Affiche la liste des clients du conseiller
