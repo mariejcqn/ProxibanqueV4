@@ -5,10 +5,8 @@ import java.io.Serializable;
 import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 import com.proxibanque.domaine.Client;
 import com.proxibanque.domaine.Conseiller;
@@ -30,7 +28,6 @@ public class ConseillerBeanDummy implements Serializable {
 
 	@Autowired
 	private IClientService clientService;
-	
 
 	// Méthode static qui se lance à chaque initialisation
 	static {
