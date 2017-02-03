@@ -73,8 +73,8 @@
 		<!-- nouvel aspect -->
 		<aop:aspect id="customAspect" ref="customLogger">
 
-			<!-- greffon around qui s'applique au pointcut du nouveau service -->
-			<aop:around method="doBasicProfiling" pointcut-ref="servicePointcut" />
+<!-- 			greffon around qui s'applique au pointcut du nouveau service -->
+<!-- 	<aop:around method="doBasicProfiling" pointcut-ref="servicePointcut" /> -->
 
 		</aop:aspect>
 
